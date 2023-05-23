@@ -1,0 +1,34 @@
+@import "../../styles/index.scss";
+
+.timer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: getRem(32);
+
+  &-display {
+    text-align: center;
+    width: getRem(295);
+  }
+
+  &-controls {
+    display: flex;
+    align-items: center;
+    gap: getRem(16);
+  }
+
+  &-focus, &-focus2 {
+    background-color: $red50;
+  }
+
+  &-short {
+    background-color: $green50;
+  }
+
+  &-long {
+    background-color: $blue50;
+  }
+}

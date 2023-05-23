@@ -1,0 +1,86 @@
+@import "../../styles/index.scss";
+
+.button {
+  border: 0;
+  border-radius: getRem(32);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &-small {
+    padding: getRem(12.5);
+    svg {
+      width: getRem(12);
+      height: getRem(14);
+    }
+  }
+
+  &-medium {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: getRem(80);
+    height: getRem(80);
+  }
+
+  &-big {
+    padding: getRem(35) getRem(56);
+  }
+
+  &-secondary.button-focus,
+  &-secondary.button-focus2 {
+    background-color: $redA100;
+    svg {
+      path {
+        fill: $red900;
+      }
+    }
+  }
+
+  &-secondary.button-short {
+    background-color: $greenA100;
+    svg {
+      path {
+        fill: $green900;
+      }
+    }
+  }
+
+  &-secondary.button-long {
+    background-color: $blueA100;
+    svg {
+      path {
+        fill: $blue900;
+      }
+    }
+  }
+
+  &-main.button-focus,
+  &-main.button-focus2 {
+    background-color: $redA700;
+    svg {
+      path {
+        fill: $red900;
+      }
+    }
+  }
+
+  &-main.button-short {
+    background-color: $greenA600;
+    svg {
+      path {
+        fill: $green900;
+      }
+    }
+  }
+
+  &-main.button-long {
+    background-color: $blueA600;
+    svg {
+      path {
+        fill: $blue900;
+      }
+    }
+  }
+}

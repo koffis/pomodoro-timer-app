@@ -1,0 +1,47 @@
+@import "../../styles/index.scss";
+
+.chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: getRem(9);
+  padding: getRem(11) getRem(17);
+  border-radius: getRem(9999);
+
+  &-focus,
+  &-focus2 {
+    background-color: $redA100;
+    color: $red900;
+    border: getRem(2) solid $red900;
+
+    svg {
+      path {
+        fill: $red900;
+      }
+    }
+  }
+
+  &-short {
+    background-color: $greenA100;
+    color: $green900;
+    border: getRem(2) solid $green900;
+
+    svg {
+      path {
+        fill: $green900;
+      }
+    }
+  }
+
+  &-long {
+    background-color: $blueA100;
+    color: $blue900;
+    border: getRem(2) solid $blue900;
+
+    svg {
+      path {
+        fill: $blue900;
+      }
+    }
+  }
+}
