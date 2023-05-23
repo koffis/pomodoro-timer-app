@@ -1,8 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import Timer from "./components/timer";
-import "./styles/index.scss";
-import "./assets/images/brain.svg";
 import Settings from "./components/settings";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import "./styles/index.scss";
 
 const App: FC = () => {
   const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -11,7 +13,7 @@ const App: FC = () => {
   const [focusLength, setFocusLength] = useState<number>(1500);
   const [shortLeangth, setShortLength] = useState<number>(300);
   const [longLength, setLongLength] = useState<number>(900);
-  const [notifications, setNotifications] = useState<boolean>(false);
+  const [notifications, setNotifications] = useState<boolean>(true);
 
   const [phase, setPhase] = useState<"focus" | "short" | "focus2" | "long">(
     "focus"
@@ -78,8 +80,9 @@ const App: FC = () => {
   }, [phase, focusLength, shortLeangth, longLength]);
 
   return (
-    <div className={`pomodoro ${darkMode ? 'darkMode' : ''}`}>
+    <div className={`pomodoro ${darkMode ? "darkMode" : ""}`}>
       <Timer
+        toast={toast}
         setShowSettings={setShowSettings}
         phaseOptions={phaseOptions}
         phase={phase}
@@ -89,7 +92,7 @@ const App: FC = () => {
       />
       {showSettings && (
         <Settings
-          showSettings={showSettings}
+          toast={toast}
           setShowSettings={setShowSettings}
           phase={phase}
           darkMode={darkMode}
@@ -102,6 +105,20 @@ const App: FC = () => {
           setLongLength={setLongLength}
           notifications={notifications}
           setNotifications={setNotifications}
+        />
+      )}
+      {notifications && (
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={darkMode ? "dark" : "light"}
         />
       )}
     </div>

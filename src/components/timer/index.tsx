@@ -10,6 +10,7 @@ interface TimerProps {
     duration: number;
     nextPhase: string;
   };
+  toast: any;
   phase: "focus" | "short" | "focus2" | "long";
   setPhase: (param: "focus" | "short" | "focus2" | "long") => void;
   allPhases: ("focus" | "short" | "focus2" | "long")[];
@@ -18,6 +19,7 @@ interface TimerProps {
 }
 
 const Timer: FC<TimerProps> = ({
+  toast,
   phase,
   allPhases,
   setPhase,
@@ -38,6 +40,7 @@ const Timer: FC<TimerProps> = ({
   }, [phaseOptions]);
 
   useEffect(() => {
+    if(timerState) toast(`Countdown is started`)
     const interval = setInterval(() => {
       timerState &&
         setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0));
@@ -45,6 +48,7 @@ const Timer: FC<TimerProps> = ({
     return () => {
       clearInterval(interval);
     };
+
   }, [timerState]);
 
   useEffect(() => {
@@ -53,6 +57,7 @@ const Timer: FC<TimerProps> = ({
       let newPhase = allPhases.shift()!;
       setAllPhases([...allPhases, newPhase]);
       setPhase(newPhase);
+      toast(`Changed to next phase!`)
     }
   }, [timeLeft]);
 
@@ -72,6 +77,7 @@ const Timer: FC<TimerProps> = ({
           setAllPhases([...allPhases, newPhase]);
           setPhase(newPhase);
           setTimerState(false);
+          toast(`Changed to next phase!`)
         }}
       />
     </div>

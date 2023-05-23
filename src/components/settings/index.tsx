@@ -22,7 +22,6 @@ const CloseIcon: FC<{ setShowSettings: (param: boolean) => void }> = ({
 );
 
 interface SettingsProps {
-  showSettings: boolean;
   setShowSettings: (param: boolean) => void;
   phase: "focus" | "short" | "focus2" | "long";
   darkMode: boolean;
@@ -35,10 +34,11 @@ interface SettingsProps {
   setLongLength: (param: number) => void;
   notifications: boolean;
   setNotifications: (param: boolean) => void;
+  toast: any;
 }
 
 const Settings: FC<SettingsProps> = ({
-  showSettings,
+  toast,
   setShowSettings,
   phase,
   darkMode,
@@ -52,8 +52,6 @@ const Settings: FC<SettingsProps> = ({
   notifications,
   setNotifications,
 }) => {
-
-
   return (
     <div className="settings">
       <div id="settings-modal" className={`settings-menu settings-${phase}`}>
@@ -66,7 +64,10 @@ const Settings: FC<SettingsProps> = ({
             <span className="regular">Dark mode</span>
             <Toggle
               defaultChecked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
+              onChange={() => {
+                setDarkMode(!darkMode);
+                toast("Color theme was changed!");
+              }}
             />
           </div>
           <div className="settings-menu-controls-item">
