@@ -22,13 +22,16 @@
 
   &-focus, &-focus2 {
     background-color: $red50;
+    color: $red900;
   }
 
   &-short {
     background-color: $green50;
+    color: $green900;
   }
 
   &-long {
     background-color: $blue50;
+    color: $blue900;
   }
 }

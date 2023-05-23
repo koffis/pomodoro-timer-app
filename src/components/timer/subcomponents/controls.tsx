@@ -37,17 +37,19 @@ interface ControlsProps {
   rightButtonActions: () => void;
   timerState: boolean;
   phase: "focus" | "short" | "focus2" | "long";
+  leftButtonAction: () => void;
 }
 
 const Controls: FC<ControlsProps> = ({
   mainButtonAction,
   timerState,
   rightButtonActions,
-  phase
+  phase,
+  leftButtonAction
 }) => {
   return (
     <div className="timer-controls">
-      <Button phase={phase} size="medium" action={() => console.log(1)}>
+      <Button phase={phase} size="medium" action={leftButtonAction}>
         <svg
           width="28"
           height="8"

@@ -13,6 +13,7 @@ interface TimerProps {
   phase: "focus" | "short" | "focus2" | "long";
   setPhase: (param: "focus" | "short" | "focus2" | "long") => void;
   allPhases: ("focus" | "short" | "focus2" | "long")[];
+  setShowSettings: (param: boolean) => void;
   setAllPhases: (arr: ("focus" | "short" | "focus2" | "long")[]) => void;
 }
 
@@ -22,6 +23,7 @@ const Timer: FC<TimerProps> = ({
   setPhase,
   phaseOptions,
   setAllPhases,
+  setShowSettings
 }) => {
   const getPadTime = (time: number) => time.toString().padStart(2, "0");
 
@@ -64,6 +66,7 @@ const Timer: FC<TimerProps> = ({
         phase={phase}
         mainButtonAction={setTimerState}
         timerState={timerState}
+        leftButtonAction={() => setShowSettings(true)}
         rightButtonActions={() => {
           let newPhase = allPhases.shift()!;
           setAllPhases([...allPhases, newPhase]);

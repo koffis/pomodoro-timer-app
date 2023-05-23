@@ -1,6 +1,264 @@
 /* base */
-@import 'normalize';
-@import 'functions';
-@import 'vars';
-@import 'breakpoints';
-@import 'typography';
+@import "normalize";
+@import "functions";
+@import "vars";
+@import "breakpoints";
+@import "typography";
+
+.darkMode {
+  .timer {
+    &-focus,
+    &-focus2 {
+      background-color: $red950;
+      color: $red50;
+    }
+
+    &-short {
+      background-color: $green950;
+      color: $green50;
+    }
+
+    &-long {
+      background-color: $blue950;
+      color: $blue50;
+    }
+  }
+
+  .button {
+    &-secondary.button-focus,
+    &-secondary.button-focus2 {
+      background-color: $redA100;
+      svg {
+        path {
+          fill: $red100;
+        }
+      }
+    }
+
+    &-secondary.button-short {
+      background-color: $greenA100;
+      svg {
+        path {
+          fill: $green100;
+        }
+      }
+    }
+
+    &-secondary.button-long {
+      background-color: $blueA100;
+      svg {
+        path {
+          fill: $blue100;
+        }
+      }
+    }
+
+    &-main.button-focus,
+    &-main.button-focus2 {
+      background-color: $redA700;
+      svg {
+        path {
+          fill: $red100;
+        }
+      }
+    }
+
+    &-main.button-short {
+      background-color: $greenA600;
+      svg {
+        path {
+          fill: $green100;
+        }
+      }
+    }
+
+    &-main.button-long {
+      background-color: $blueA600;
+      svg {
+        path {
+          fill: $blue100;
+        }
+      }
+    }
+  }
+
+  .chip {
+    &-focus,
+    &-focus2 {
+      background-color: $redA100;
+      color: $red50;
+      border: getRem(2) solid $red50;
+
+      svg {
+        path {
+          fill: $red50;
+        }
+      }
+    }
+
+    &-short {
+      background-color: $greenA100;
+      color: $green50;
+      border: getRem(2) solid $green50;
+
+      svg {
+        path {
+          fill: $green50;
+        }
+      }
+    }
+
+    &-long {
+      background-color: $blueA100;
+      color: $blue50;
+      border: getRem(2) solid $blue50;
+
+      svg {
+        path {
+          fill: $blue50;
+        }
+      }
+    }
+  }
+}
+
+.react-toggle {
+  touch-action: pan-x;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-toggle-screenreader-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: getRem(1);
+  margin: getRem(-1);
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: getRem(1);
+}
+
+.react-toggle--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+
+.react-toggle-track {
+  width: getRem(34);
+  height: getRem(20);
+  padding: 0;
+  border-radius: getRem(30);
+  background-color: #4d4d4d;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #000000;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #19ab27;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #128d15;
+}
+
+.react-toggle-track-check {
+  position: absolute;
+  width: getRem(14);
+  height: getRem(10);
+  top: getRem(0);
+  bottom: getRem(0);
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  left: getRem(8);
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-check {
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle-track-x {
+  position: absolute;
+  width: getRem(10);
+  height: getRem(10);
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  right: getRem(10);
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-x {
+  opacity: 0;
+}
+
+.react-toggle-thumb {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  position: absolute;
+  top: getRem(2);
+  left: getRem(3);
+  width: getRem(16);
+  height: getRem(16);
+  border: getRem(1) solid #4d4d4d;
+  border-radius: 50%;
+  background-color: #fafafa;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-thumb {
+  left: getRem(16);
+  border-color: #19ab27;
+}
+
+.react-toggle--focus .react-toggle-thumb {
+  -webkit-box-shadow: getRem(0) getRem(0) getRem(3) getRem(2) #0099e0;
+  -moz-box-shadow: getRem(0) getRem(0) getRem(3) getRem(2) #0099e0;
+  box-shadow: getRem(0) getRem(0) getRem(2) getRem(3) #0099e0;
+}
+
+.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+  -webkit-box-shadow: getRem(0) getRem(0) getRem(5) getRem(5) #0099e0;
+  -moz-box-shadow: getRem(0) getRem(0) getRem(5) getRem(5) #0099e0;
+  box-shadow: getRem(0) getRem(0) getRem(5) getRem(5) #0099e0;
+}

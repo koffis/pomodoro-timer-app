@@ -1,5 +1,88 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
 
 .settings {
-    
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: $black200;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-menu {
+    border-radius: getRem(24);
+    padding: getRem(27) getRem(24);
+    box-shadow: getRem(0) getRem(1) getRem(6) rgba(0, 0, 0, 0.039),
+      getRem(0) getRem(5.5) getRem(16) rgba(0, 0, 0, 0.19);
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      width: getRem(290);
+      @include breakpoint(mobile_landscape) {
+        width: getRem(400);
+      }
+      align-items: center;
+      margin-bottom: getRem(27);
+
+      svg {
+        width: getRem(12);
+        height: getRem(12);
+        cursor: pointer;
+      }
+    }
+
+    &-controls {
+      &-item {
+        height: getRem(64);
+        width: getRem(300);
+        @include breakpoint(mobile_landscape) {
+          width: getRem(400);
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          width: getRem(96);
+          height: getRem(40);
+          text-align: center;
+          border: getRem(1) solid $black100;
+          border-radius: getRem(8);
+          &:focus, &:active {
+            border: getRem(1) solid $black100;
+            border-radius: getRem(8);
+            outline: none;
+          }
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          width: getRem(29);
+          position: absolute;
+          -webkit-appearance: none;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &-focus,
+  &-focus2 {
+    background-color: $red50;
+    color: $red900;
+  }
+
+  &-short {
+    background-color: $green50;
+    color: $green900;
+  }
+
+  &-long {
+    background-color: $blue50;
+    color: $blue900;
+  }
 }

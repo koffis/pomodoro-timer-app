@@ -2,18 +2,24 @@ import { FC, useEffect, useState } from "react";
 import Timer from "./components/timer";
 import "./styles/index.scss";
 import "./assets/images/brain.svg";
+import Settings from "./components/settings";
 
 const App: FC = () => {
+  const [showSettings, setShowSettings] = useState<boolean>(false);
+
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [focusLength, setFocusLength] = useState<number>(1500);
+  const [shortLeangth, setShortLength] = useState<number>(300);
+  const [longLength, setLongLength] = useState<number>(900);
+  const [notifications, setNotifications] = useState<boolean>(false);
+
   const [phase, setPhase] = useState<"focus" | "short" | "focus2" | "long">(
     "focus"
   );
 
-  const [allPhases, setAllPhases] = useState<("focus" | "short" | "focus2" | "long")[]>([
-    "short",
-    "focus",
-    "long",
-    "focus",
-  ])
+  const [allPhases, setAllPhases] = useState<
+    ("focus" | "short" | "focus2" | "long")[]
+  >(["short", "focus", "long", "focus"]);
 
   const [phaseOptions, setPhaseOptions] = useState<{
     name: string;
@@ -33,7 +39,7 @@ const App: FC = () => {
         setPhaseOptions({
           name: "Focus",
           phase: "focus",
-          duration: 1500,
+          duration: focusLength,
           nextPhase: "short",
         });
         break;
@@ -41,7 +47,7 @@ const App: FC = () => {
         setPhaseOptions({
           name: "Short Brake",
           phase: "short",
-          duration: 300,
+          duration: shortLeangth,
           nextPhase: "focus2",
         });
         break;
@@ -49,15 +55,15 @@ const App: FC = () => {
         setPhaseOptions({
           name: "Focus",
           phase: "focus2",
-          duration: 1500,
+          duration: focusLength,
           nextPhase: "long",
         });
         break;
       case "long":
         setPhaseOptions({
           name: "Long Break",
-          phase: "focus2",
-          duration: 900,
+          phase: "long",
+          duration: longLength,
           nextPhase: "focus",
         });
         break;
@@ -69,17 +75,36 @@ const App: FC = () => {
           nextPhase: "short",
         });
     }
-    console.log(phase)
-  }, [phase]);
+  }, [phase, focusLength, shortLeangth, longLength]);
 
   return (
-    <Timer
-      phaseOptions={phaseOptions}
-      phase={phase}
-      setPhase={setPhase}
-      allPhases={allPhases}
-      setAllPhases={setAllPhases}
-    />
+    <div className={`pomodoro ${darkMode ? 'darkMode' : ''}`}>
+      <Timer
+        setShowSettings={setShowSettings}
+        phaseOptions={phaseOptions}
+        phase={phase}
+        setPhase={setPhase}
+        allPhases={allPhases}
+        setAllPhases={setAllPhases}
+      />
+      {showSettings && (
+        <Settings
+          showSettings={showSettings}
+          setShowSettings={setShowSettings}
+          phase={phase}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          focusLength={focusLength}
+          setFocusLength={setFocusLength}
+          shortLeangth={shortLeangth}
+          setShortLength={setShortLength}
+          longLength={longLength}
+          setLongLength={setLongLength}
+          notifications={notifications}
+          setNotifications={setNotifications}
+        />
+      )}
+    </div>
   );
 };
 
